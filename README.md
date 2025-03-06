@@ -1,54 +1,102 @@
-# React + TypeScript + Vite
+# **E-Commerce Admin Dashboard**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## **Project Overview**
 
-Currently, two official plugins are available:
+Developed an admin panel where users can manage products, carts, users, orders, recipes, posts, comments, and quotes using the **DummyJSON API**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## **Core Features**
 
-## Expanding the ESLint configuration
+### **1. Authentication (Auth API)**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Implemented a login page using **React Hook Form** for form validation.
+- Handled failed login attempts with proper error messages.
+- Stored authentication tokens using **Zustand**.
+  
+![Screenshot 2025-03-06 194607](https://github.com/user-attachments/assets/31a7a461-f333-4449-9dea-73b814e0db28)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### **2. Product Management**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Displayed all products (GET `/products`)
+- Implemented **search and filter functionality** using **useState**
+- Implemented Add, edit, and delete products using the **API**.
+- Performed Form validation with **React Hook Form**.
+- UI using **Material UI**
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+  ![Screenshot 2025-03-06 194920](https://github.com/user-attachments/assets/0fbd824f-49e2-4a80-bb75-de8c6c2303bb)
+
+
+---
+
+### **3. Cart Management (Admin Perspective)**
+
+- Fetched cart data (GET /carts).
+- Added items to the cart (POST /carts/add).
+- Removeed items from the cart.
+- Displayed cart summary with total price calculations.
+- Used Zustand to maintain global cart state.
+
+  ![Screenshot 2025-03-06 194959](https://github.com/user-attachments/assets/2a38e240-4bc7-4cf8-8656-ba57eddedc15)
+
+
+---
+
+### **4. User Management**
+
+- Fetched all users (GET `/users`).
+- Displayed user details (GET `/users/{id}`).
+- Implemented **search and filtering**.
+- Admin can edit user details.
+
+  ![Screenshot 2025-03-06 194754](https://github.com/user-attachments/assets/f66c6b49-9946-40a7-aad3-41a29e482549)
+
+
+
+---
+
+### **5. Order Management**
+
+- Fetched all orders (GET `/carts` as order history).
+- Displayed order details and associated users.
+- Implemented **order status update** feature.
+
+  ![Screenshot 2025-03-06 194902](https://github.com/user-attachments/assets/7127c119-a6dc-4206-b003-0d874bb1e9bb)
+
+
+---
+
+### **6. Blog & Comments Section**
+
+- Fetched posts (GET `/posts`).
+- Displayed post details (GET `/posts/{id}`).
+- Fetched comments for a post (GET `/comments`).
+- Can add new comments (POST `/comments/add`).
+- Used **Zustand** to manage user comments globally.
+
+  ![Screenshot 2025-03-06 195017](https://github.com/user-attachments/assets/1628bae6-782a-49e8-836a-b2fbf085777b)
+
+
+---
+
+### **7. Quotes & Recipes**
+
+- Fetched motivational quotes (GET `/quotes`).
+- Fetched recipes (GET `/recipes`).
+- Displayed quotes and recipes on a dashboard.
+
+
+---
+
+## **Stretch Goals (Optional)**
+
+- Implemented **Dark Mode** using `useContext` and `useTheme` from Material UI
+- Added **pagination** for large datasets
+- Added **user role management** for restricting actions like add, edit or delete product and more...
+
+  **Below is the ScreenShot of a User Logged-In with theme set to light**
+
+  ![Screenshot 2025-03-06 195050](https://github.com/user-attachments/assets/0d9e2212-3839-47d1-947e-6e5b2e61478f)
+
+
+---
