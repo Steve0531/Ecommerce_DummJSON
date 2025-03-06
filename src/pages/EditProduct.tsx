@@ -6,6 +6,7 @@ import { useForm, Controller } from "react-hook-form";
 import { TextField, Button, Box, CircularProgress, Alert, Typography, IconButton } from "@mui/material";
 import ThemeToggle from "../components/ThemeToggle";
 import { ArrowBack } from "@mui/icons-material";
+import Footer from "../components/Footer";
 
 type ProductForm ={
   title: string;
@@ -142,6 +143,7 @@ const EditProduct = () => {
       </Button>
     </form>
   </Box>
+  <Footer/>
 </Box>
 
 

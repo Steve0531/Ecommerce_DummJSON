@@ -5,6 +5,7 @@ import { fetchUserById, updateUser } from "../api/userApi"; // Import API calls
 import ThemeToggle from "../components/ThemeToggle";
 import { useEffect, useState } from "react";
 import { ArrowBack } from "@mui/icons-material";
+import Footer from "../components/Footer";
 
 const UserDetails = () => {
   const { id } = useParams<{ id: string }>();
@@ -228,6 +229,7 @@ const UserDetails = () => {
           </Box>
         </CardContent>
       </Card>
+      <Footer/>
     </Container>
   );
 };

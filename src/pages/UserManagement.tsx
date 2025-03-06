@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { fetchUsers } from "../api/userApi";
 import ThemeToggle from "../components/ThemeToggle";
+import Footer from "../components/Footer";
 
 const UserManagement = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -15,7 +16,7 @@ const UserManagement = () => {
 
   const theme = useTheme();
 
-  const itemsPerPage = 10;
+  const itemsPerPage = 9;
 
 
   const { data: userList, refetch,isError, isLoading } = useQuery({
@@ -61,7 +62,7 @@ const UserManagement = () => {
   const displayedUsers = userList.users.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   return (
-    <Container maxWidth="xl" sx={{ mt: 4 }}>
+    <Container maxWidth="xl" sx={{ mb: 4 , height:100}}>
  
       <Typography variant="h4" textAlign="center" fontWeight={600} gutterBottom>
         👥 User Management
@@ -73,7 +74,7 @@ const UserManagement = () => {
             padding: 3,
             borderRadius: 4,
             boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-            backgroundColor: theme.palette.mode === "dark" ? "rgb(41, 39, 39)":"rgb(255, 255, 255)", 
+            backgroundColor: theme.palette.mode === "dark" ? "rgb(0, 0, 0)":"rgb(204, 202, 202)", 
             opacity: 1, 
             }}
           >   
@@ -178,7 +179,7 @@ const UserManagement = () => {
         </TableContainer>
 
         {totalPages > 1 && (
-          <Box display="flex" justifyContent="center" mt={3}>
+          <Box display="flex" justifyContent="center" mt={4}>
             <Pagination
               count={totalPages}
               page={currentPage}
@@ -190,6 +191,7 @@ const UserManagement = () => {
           </Box>
         )}
       </Paper>
+      <Footer/>
     </Container>
   );
 };

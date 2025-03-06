@@ -9,6 +9,7 @@ import { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import { useCartStore } from "../store/cartStore";
 import { useProdStore } from "../store/prodStore";
+import Footer from "../components/Footer";
 
 const Products = () => {
     const { products, setProducts } = useProdStore();
@@ -205,7 +206,7 @@ const Products = () => {
             </Box>
 
             {totalPages > 1 && (
-                <Box display="flex" justifyContent="center" mt={4}>
+                <Box display="flex" justifyContent="center" mt={2}>
                     <Pagination 
                         count={totalPages} 
                         page={currentPage} 
@@ -227,6 +228,7 @@ const Products = () => {
                 </Alert>
             </Snackbar>
             </Paper>
+            <Footer/>
         </Box>
         
     );

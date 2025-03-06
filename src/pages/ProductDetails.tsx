@@ -7,6 +7,7 @@ import { useCartStore } from "../store/cartStore";
 import { ArrowBack, AccountCircle } from "@mui/icons-material";
 import { IReview } from "../types/Products";
 import ThemeToggle from "../components/ThemeToggle";
+import Footer from "../components/Footer";
 
 const ProductDetails = () => {
     const [openSnackbar, setOpenSnackbar] = useState(false);
@@ -162,7 +163,7 @@ const ProductDetails = () => {
                 </Alert>
             </Snackbar>
             
-
+          <Footer/>
         </Box>
     );
 };

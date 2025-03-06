@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import {Container, Typography, CircularProgress, Paper, TextField, Button, Box, List, ListItem, ListItemText, IconButton, Divider} from "@mui/material";
+import {Container, Typography, CircularProgress, Paper, TextField, Button, Box, List, ListItem, ListItemText, IconButton, Divider, useTheme} from "@mui/material";
 import { ArrowBack } from "@mui/icons-material";
 import { fetchPostById, fetchComments, addComment } from "../api/postApi";
 import { useCommentStore } from "../store/commetStore";
@@ -8,11 +8,14 @@ import { useState } from "react";
 import { IComment } from "../types/Products";
 import ThemeToggle from "../components/ThemeToggle";
 import { useAuthStore } from "../store/authStore";
+import Footer from "../components/Footer";
 
 const BlogPostDetails = () => {
   const { id } = useParams<{ id: string }>();
   const postId = Number(id);
   const navigate = useNavigate();
+
+  const theme=useTheme();
 
   const userDetails = useAuthStore((state)=>(state.userDetails))
 
@@ -63,7 +66,13 @@ const BlogPostDetails = () => {
       </IconButton>
       <ThemeToggle/>
 
-      <Paper elevation={4} sx={{ p: 4, borderRadius: 3, mb: 4 }}>
+      <Paper elevation={4} 
+        sx={{ 
+          p: 4, 
+          borderRadius: 3, 
+          mb: 4, 
+          backgroundColor: theme.palette.mode === "dark" ? "rgb(0, 0, 0)":"rgb(204, 202, 202)",
+          }}>
         <Typography variant="h4" fontWeight="bold" textAlign="center" gutterBottom>
           {post.title}
         </Typography>
@@ -76,7 +85,14 @@ const BlogPostDetails = () => {
         Comments
       </Typography>
 
-      <Paper elevation={2} sx={{ p: 2, borderRadius: 3, maxHeight: "300px", overflowY: "auto" }}>
+      <Paper elevation={2} 
+          sx={{ 
+            p: 2, 
+            borderRadius: 3, 
+            maxHeight: "300px", 
+            overflowY: "auto", 
+            backgroundColor: theme.palette.mode === "dark" ? "rgb(0, 0, 0)":"rgb(204, 202, 202)",
+            }}>
         <List>
           {commentList?.comments?.map((comment: IComment) => (
             <Box key={comment.id}>
@@ -90,7 +106,7 @@ const BlogPostDetails = () => {
           {storedComments[postId]?.map((comment) => (
             <Box key={comment.id}>
               <ListItem>
-                <ListItemText primary={comment.body} secondary={`By: ${userDetails.firstName} ${userDetails.lastName}`} />
+                <ListItemText primary={comment.body} secondary={`By: ${userDetails?.firstName} ${userDetails?.lastName}`} />
               </ListItem>
               <Divider />
             </Box>
@@ -116,6 +132,7 @@ const BlogPostDetails = () => {
           Post
         </Button>
       </Box>
+      <Footer/>
     </Container>
   );
 };

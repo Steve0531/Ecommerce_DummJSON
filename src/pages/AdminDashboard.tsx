@@ -8,6 +8,7 @@ import { useUserStore } from "../store/userStore";
 import { useProdStore } from "../store/prodStore";
 import { useOrderStore } from "../store/orderStore";
 import { useAuthStore } from "../store/authStore";
+import Footer from "../components/Footer";
 
 type Recipe = {
   name: string;
@@ -47,7 +48,7 @@ const AdminDashboard = () => {
   const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
 
   return (
-    <Box sx={{ padding: 3, mt: 5 }}>
+    <Box sx={{ padding: 3, mt: 1 }}>
       <Typography
         variant="h4"
         sx={{
@@ -267,6 +268,7 @@ const AdminDashboard = () => {
       </Modal>
       
       )}
+      <Footer/>
     </Box>
   );
 };

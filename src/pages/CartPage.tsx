@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 import ThemeToggle from "../components/ThemeToggle";
+import Footer from "../components/Footer";
 
 const CartPage = () => {
   const { cart, fetchCart, decreaseQuantity, increaseQuantity, removeItem, clearCart } = useCartStore();
@@ -86,7 +87,7 @@ const CartPage = () => {
                   variant="contained"
                   color="success"
                   fullWidth
-                  sx={{ mt: 3, py: 1.5, fontSize: "1.1rem", fontWeight: "bold" }}
+                  sx={{ mb: 4, py: 1.5, fontSize: "1.1rem", fontWeight: "bold" }}
                   onClick={() => {
                     clearCart();
                     setOpenSnackbar(true); 
@@ -118,6 +119,7 @@ const CartPage = () => {
               🎉 Cart has been processed!
           </Alert>
       </Snackbar>
+      <Footer/>
     </Container>
   );
 };

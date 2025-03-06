@@ -4,6 +4,7 @@ import { TextField, Button, Box, Typography, IconButton } from "@mui/material";
 import { addProduct } from "../api/prodApi";
 import { ArrowBack } from "@mui/icons-material";
 import { ProductForm } from "../types/Products";
+import Footer from "../components/Footer";
 
 
 const AddProduct = () => {
@@ -120,6 +121,7 @@ const AddProduct = () => {
         </Button>
       </form>
     </Box>
+    <Footer/>
   </Box>
   );
 };

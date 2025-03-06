@@ -5,6 +5,7 @@ import { fetchCarts } from "../api/cartApi";
 import { ICart } from "../types/Products";
 import ThemeToggle from "../components/ThemeToggle";
 import { useOrderStore } from "../store/orderStore";
+import Footer from "../components/Footer";
 
 
 const OrderManagement = () => {
@@ -81,6 +82,7 @@ const OrderManagement = () => {
           mt: 3,
           borderRadius: 4,
           boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+          backgroundColor: theme.palette.mode === "dark" ? "rgb(0, 0, 0)":"rgb(204, 202, 202)",
         }}
       >
         <TableContainer sx={{ borderRadius: 3 }}>
@@ -159,6 +161,7 @@ const OrderManagement = () => {
           />
         </Box>
       </Paper>
+      <Footer/>
     </Container>
   );
 };

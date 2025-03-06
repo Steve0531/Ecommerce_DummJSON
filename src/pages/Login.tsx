@@ -5,6 +5,7 @@ import { useAuthStore } from "../store/authStore";
 import { useNavigate } from "react-router-dom";
 import ThemeToggle from "../components/ThemeToggle";
 import { Box, Typography, TextField, Button, Paper } from "@mui/material";
+import Footer from "../components/Footer";
 
 
 const loginSchema = z.object({
@@ -90,6 +91,7 @@ const Login = () => {
           </Button>
         </Box>
       </Paper>
+      <Footer/>
     </Box>
   );
 };

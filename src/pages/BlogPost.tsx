@@ -1,20 +1,23 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import {Container, Typography, Paper, CircularProgress, Box, Card, CardContent, CardActions, Pagination, IconButton} from "@mui/material";
+import {Container, Typography, Paper, CircularProgress, Box, Card, CardContent, CardActions, Pagination, IconButton, useTheme} from "@mui/material";
 import { ThumbUp, ThumbDown, Visibility, Comment } from "@mui/icons-material";
 import { fetchPosts } from "../api/postApi";
 import { useNavigate } from "react-router-dom";
 import { IPost } from "../types/Products";
 import ThemeToggle from "../components/ThemeToggle";
+import Footer from "../components/Footer";
 
 const BlogPost = () => {
+
+  const theme=useTheme();
   const { data: postList, isLoading, isError } = useQuery({
     queryKey: ["posts"],
     queryFn: fetchPosts,
   });
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 4;
   const navigate = useNavigate();
 
   if (isLoading) {
@@ -42,7 +45,13 @@ const BlogPost = () => {
         🗨️ Blog Posts
       </Typography>
       <ThemeToggle/>
-      <Paper elevation={4} sx={{ padding: 3, mt: 3, borderRadius: 3 }}>
+      <Paper elevation={4} 
+          sx={{ 
+            padding: 3, 
+            mt: 3, 
+            borderRadius: 3, 
+            backgroundColor: theme.palette.mode === "dark" ? "rgb(0, 0, 0)":"rgb(204, 202, 202)",
+            }}>
         {displayedPosts.map((post: IPost) => (
           <Card key={post.id} sx={{ mb: 2, borderRadius: 2, p: 2 }}>
             <CardContent>
@@ -87,6 +96,7 @@ const BlogPost = () => {
           </Box>
         )}
       </Paper>
+      <Footer/>
     </Container>
   );
 };
