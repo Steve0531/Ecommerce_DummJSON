@@ -2,7 +2,7 @@
 
 ## **Project Overview**
 
-Developed an admin panel where users can manage products, carts, users, orders, recipes, posts, comments, and quotes using the **DummyJSON API**.
+Developed an admin dashboard where admin can manage products, carts, users, orders, recipes, posts, comments, and quotes using the **DummyJSON API**.
 
 ## **Core Features**
 
@@ -11,8 +11,9 @@ Developed an admin panel where users can manage products, carts, users, orders, 
 - Implemented a login page using **React Hook Form** for form validation.
 - Handled failed login attempts with proper error messages.
 - Stored authentication tokens using **Zustand**.
-  
-![Screenshot 2025-03-06 194607](https://github.com/user-attachments/assets/31a7a461-f333-4449-9dea-73b814e0db28)
+
+  ![image](https://github.com/user-attachments/assets/cdd02348-d854-4772-a9b4-42165a923ef9)
+
 
 ---
 
