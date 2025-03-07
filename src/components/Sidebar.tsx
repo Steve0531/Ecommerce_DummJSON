@@ -1,15 +1,26 @@
 import { useState } from "react";
-import {Drawer, List, ListItem, ListItemIcon, ListItemText, IconButton, ListItemButton, Box} from "@mui/material";
+import {Drawer, List, ListItem, ListItemIcon, ListItemText, IconButton, ListItemButton, Box, styled} from "@mui/material";
 import { Home, ShoppingCart, People, Menu, Logout, Comment, Store } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCartOutlined';
+import Badge, { badgeClasses } from '@mui/material/Badge';
 import { useAuthStore } from "../store/authStore";
+import { useCartStore } from "../store/cartStore";
 
 const Sidebar = () => {
   const [open, setOpen] = useState(true);
   const navigate = useNavigate();
   const { token, logout } = useAuthStore();
 
+  const cart= useCartStore((state)=>state.cart)
+
   const role = localStorage.getItem("role");
+  const CartBadge = styled(Badge)`
+  & .${badgeClasses.badge} {
+    top: -12px;
+    right: -6px;
+  }
+`;
 
   if (!token) return null; 
 
@@ -22,7 +33,10 @@ const Sidebar = () => {
 
   const menuItems = [
     { text: "Products", icon: <Store />, path: "/products" },
-    { text: "Cart", icon: <ShoppingCart />, path: "/cart" },
+    { text: "Cart", icon: <IconButton>
+                            <ShoppingCartIcon fontSize="medium" sx={{ color: "black", ml:-1 }}/>
+                            <CartBadge badgeContent={cart?.products.length} color="primary" overlap="circular"/>
+                          </IconButton>, path: "/cart" },
     { text: "Posts", icon: <Comment />, path: "/posts" },
   ];
 

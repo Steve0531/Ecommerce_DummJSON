@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {Box, Typography, Paper, CircularProgress, Stack, Modal, Button, useTheme} from "@mui/material";
+import {Box, Typography, Paper, CircularProgress, Stack, Modal, Button, useTheme, Card, CardMedia} from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import { BarChart, PieChart } from "@mui/x-charts";
 import { fetchQuotes, fetchRecipes } from "../api/quotesApi";
@@ -16,6 +16,7 @@ type Recipe = {
   instructions: string;
   cookTimeMinutes:number;
   servings:number;
+  image:string;
 };
 
 type Quote = {
@@ -243,6 +244,15 @@ const AdminDashboard = () => {
         sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
       >
         <Paper sx={{ padding: 4, width: "500px", textAlign: "center" }}>
+        <Card sx={{ width: 450, boxShadow: 3, borderRadius: 2, height: 400 ,mb:3}}>
+            <CardMedia
+              component="img"
+              height="350" 
+              image={selectedRecipe?.image}
+              alt={selectedRecipe?.name}
+              sx={{ objectFit: "cover"}} 
+            />
+          </Card>
           <Typography variant="h5">{selectedRecipe.name}</Typography>
       
           <Typography variant="body1" sx={{ marginTop: 2, textDecoration: "underline", textAlign: "left" }}>
@@ -274,3 +284,4 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
+
