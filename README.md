@@ -3,8 +3,19 @@
 ## **Project Overview**
 
 Developed an admin dashboard where admin can manage products, carts, users, orders, recipes, posts, comments, and quotes using the **DummyJSON API**.
+## **Login Credientials**
+For Admin- 
+Username - emilys ||
+Password - emilyspass
+
+For User-
+Username- logant ||
+Password- logantpass
+          
 
 ## **Core Features**
+
+
 
 ### **1. Authentication (Auth API)**
 
@@ -33,6 +44,7 @@ Developed an admin dashboard where admin can manage products, carts, users, orde
 ### **3. Cart Management (Admin Perspective)**
 
 - Fetched cart data (GET /carts).
+- Pre filled cart with products received from api call (GET /carts/1)
 - Added items to the cart (POST /carts/add).
 - Removeed items from the cart.
 - Displayed cart summary with total price calculations.
