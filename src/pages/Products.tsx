@@ -3,7 +3,7 @@ import { deleteProduct, fetchCategories, fetchProducts } from "../api/prodApi";
 import { IProduct } from "../types/Products";
 import ThemeToggle from "../components/ThemeToggle";
 import { useNavigate } from "react-router-dom";
-import { Box, Card, CardMedia, CardContent, Typography, CircularProgress, Alert, Button, TextField, Select, MenuItem, Pagination, Snackbar, Paper, useTheme} from "@mui/material";
+import { Box, Card, CardMedia, CardContent, Typography, CircularProgress, Alert, Button, TextField, Select, MenuItem, Pagination, Snackbar, Paper, useTheme, ButtonGroup} from "@mui/material";
 import { SelectChangeEvent } from "@mui/material";
 import { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
@@ -19,7 +19,7 @@ const Products = () => {
     const [selectedCategory, setSelectedCategory] = useState("");
     const [openSnackbar, setOpenSnackbar] = useState(false);
 
-    const itemsPerPage = 8;
+    const itemsPerPage = 10;
     const theme=useTheme();
 
     const navigate = useNavigate();
@@ -152,7 +152,7 @@ const Products = () => {
                 gap={3}
             >
                 {displayedProducts.map((product) => (
-                    <Card key={product.id} sx={{ borderRadius: 3, boxShadow: 2, width: 400,height:500, cursor: "pointer", 
+                    <Card key={product.id} sx={{ borderRadius: 3, boxShadow: 2, width: 350,height:500, cursor: "pointer", 
                         transition: "transform 0.3s ease, box-shadow 0.3s ease",
                         "&:hover": { 
                             transform: "scale(1.05)", 
@@ -172,7 +172,8 @@ const Products = () => {
                             <Typography variant="h6" color="primary">${product.price}</Typography>
                             
 
-                    {role==="admin" && ( <Box display="flex" gap={1} mt={2}>
+                    {role==="admin" && ( <Box display="flex" gap={1} mt={2} >
+                         <ButtonGroup color="secondary" aria-label="Medium-sized button group">
                                 <Button 
                                     variant="outlined" 
                                     onClick={() => navigate(`/edit-product/${product.id}`)}
@@ -186,6 +187,7 @@ const Products = () => {
                                 >
                                     Delete
                                 </Button>
+                            </ButtonGroup>    
                         </Box>)}
                         <Box display="flex" justifyContent="center" mt={2}>
                           <Button 

@@ -34,7 +34,7 @@ const Layout = () => {
         p={1}
         sx={{
           transition: "margin-left 0.3s ease-in-out", 
-          marginLeft: isSidebarOpen ? "90px" : "5px",
+          marginLeft: isSidebarOpen ? "20px" : "5px",
           position: "relative", 
           zIndex: 1, 
         }}

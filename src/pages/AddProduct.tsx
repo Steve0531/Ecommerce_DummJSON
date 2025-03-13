@@ -17,7 +17,7 @@ const AddProduct = () => {
   const onSubmit = async (data: ProductForm) => {
     await addProduct(data);
     reset();
-    navigate("/dashboard"); 
+    navigate(-1); 
   };
 
   return (

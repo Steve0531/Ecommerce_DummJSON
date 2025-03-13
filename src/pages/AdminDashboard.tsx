@@ -9,6 +9,7 @@ import { useProdStore } from "../store/prodStore";
 import { useOrderStore } from "../store/orderStore";
 import { useAuthStore } from "../store/authStore";
 import Footer from "../components/Footer";
+import { useNavigate } from "react-router-dom";
 
 type Recipe = {
   name: string;
@@ -28,6 +29,7 @@ type Quote = {
 
 const AdminDashboard = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const users = useUserStore((state) => state.users);
   const products = useProdStore((state) => state.products);
@@ -65,34 +67,56 @@ const AdminDashboard = () => {
       <ThemeToggle />
       
       <Stack direction="row" spacing={3} justifyContent="space-between">
-        <Paper
-          sx={{
-            padding: 2,
-            textAlign: "center",
-            flex: 1,
-            backgroundColor: theme.palette.mode === "dark" ? "rgb(63, 83, 137)":"rgb(228, 224, 224)" 
-          }}>
+        <Paper 
+            onClick={() => navigate("/user-management")}
+            sx={{
+              padding: 2,
+              textAlign: "center",
+              flex: 1,
+              cursor: "pointer", 
+              transition: "0.3s",
+              backgroundColor: theme.palette.mode === "dark" ? "rgb(63, 83, 137)" : "rgb(228, 224, 224)",
+              "&:hover": {
+                backgroundColor: theme.palette.mode === "dark" ? "rgb(31, 49, 96)" : "rgb(200, 200, 200)", 
+                boxShadow: 5,
+              },
+            }}
+        >
 
           <Typography variant="h6">Total Users</Typography>
           <Typography variant="h4">{users.length}</Typography>
         </Paper>
         <Paper
+          onClick={() => navigate("/products")}
           sx={{
             padding: 2,
             textAlign: "center",
             flex: 1,
-            backgroundColor: theme.palette.mode === "dark" ? "rgb(155, 116, 72)":"rgb(228, 224, 224)" 
+            cursor: "pointer", 
+            transition: "0.3s",
+            backgroundColor: theme.palette.mode === "dark" ? "rgb(155, 116, 72)":"rgb(228, 224, 224)",
+            "&:hover": {
+              backgroundColor: theme.palette.mode === "dark" ? "rgb(101, 70, 35)" : "rgb(200, 200, 200)", 
+              boxShadow: 5,
+            } 
           }}
         >
           <Typography variant="h6">Total Products</Typography>
           <Typography variant="h4">{products.length}</Typography>
         </Paper>
         <Paper
+          onClick={() => navigate("/order-management")}
           sx={{
             padding: 2,
             textAlign: "center",
             flex: 1,
-            backgroundColor: theme.palette.mode === "dark" ? "rgb(63, 137, 78)":"rgb(228, 224, 224)" 
+            cursor: "pointer", 
+            transition: "0.3s",
+            backgroundColor: theme.palette.mode === "dark" ? "rgb(63, 137, 78)":"rgb(228, 224, 224)", 
+            "&:hover": {
+              backgroundColor: theme.palette.mode === "dark" ? "rgb(25, 85, 38)" : "rgb(200, 200, 200)", 
+              boxShadow: 5,
+            }
           }}
         >
           <Typography variant="h6">Total Orders</Typography>
