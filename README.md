@@ -3,6 +3,11 @@
 ## **Project Overview**
 
 Developed an admin dashboard where admin can manage products, carts, users, orders, recipes, posts, comments, and quotes using the **DummyJSON API**.
+
+## **Project Preview**
+
+<a href="https://drive.google.com/file/d/1VaUVXDKCVHxw7x8mpJ3puOhhVvUakoLK/view?usp=drive_link"> Project Preview </a>     
+
 ## **Login Credientials**
 For Admin- 
 Username - emilys ||
